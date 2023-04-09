@@ -10,6 +10,14 @@
 
 @font-face {
   font-family: "Avenir Next";
+  src: url("../../assets/Font/AvenirNextLTPro-Demi.otf") format("opentype"),
+    url("../../assets/Font/Alternative files/AvenirNextLTProDemi.ttf")
+      format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Avenir Next";
   src: url("../../assets/Font/AvenirNextLTPro-Bold.otf") format("opentype"),
     url("../../assets/Font/Alternative files/AvenirNextLTProBold.ttf")
       format("truetype");
@@ -19,7 +27,7 @@
 .page-header {
   font-size: 1.5rem;
   line-height: 2rem;
-  font-weight: 700;
+  font-weight: 600;
 
   @include tablet {
     font-size: 2.0625rem;
@@ -43,7 +51,7 @@
 .subheader {
   font-size: 0.8125rem;
   line-height: 1.125rem;
-  font-weight: 700;
+  font-weight: 600;
 
   @include tablet {
     font-size: 0.875rem;
@@ -66,7 +74,7 @@
 .labelsbuttons {
   font-size: 0.8125rem;
   line-height: 1.25rem;
-  font-weight: 400;
+  font-weight: 600;
 
   @include tablet {
     font-size: 0.75rem;

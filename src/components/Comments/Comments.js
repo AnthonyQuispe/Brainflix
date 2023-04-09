@@ -2,6 +2,7 @@ import React from "react";
 import userAvatar from "../../assets/Images/Mohan-muruge.jpg";
 import "./Comments.scss";
 import videoDetails from "../../data/video-details.json";
+import addComment from "../../assets/Images/Icons/add_comment.svg";
 
 function CommentList({ videoId }) {
   const currentVideo = videoDetails.find((video) => video.id === videoId);
@@ -15,13 +16,15 @@ function CommentList({ videoId }) {
 
   return (
     <div className="comments">
-      <h4 className="comments__count">{videoComments.length} Comments</h4>
+      <h4 className="comments__count subheader">
+        {videoComments.length} Comments
+      </h4>
       <form className="comments__form">
-        <div className="comments__form-group">
+        <div className="comments__form-container">
           <img className="comments__avatar" src={userAvatar} alt="Avatar" />
           <div className="comments__textarea-container">
-            <label className="comments__textarea-title">
-              Join the Conversation
+            <label className="comments__textarea-title subheader">
+              JOIN THE CONVERSATION
               <textarea
                 className="comments__textarea comments__input"
                 name="comment"
@@ -31,7 +34,8 @@ function CommentList({ videoId }) {
                 placeholder="Add a new comment"
               ></textarea>
               <button className="comments__button comments__input">
-                Comment
+                <img className="comments__button--img" src={addComment} />
+                <p className="comments__button--text labelsbuttons">Comment </p>
               </button>
             </label>
           </div>
@@ -44,12 +48,12 @@ function CommentList({ videoId }) {
               <img className="comments__avatars" alt="" />
               <div className="comments__content">
                 <div className="comments__header">
-                  <p className="comments__user">{comment.name}</p>
-                  <p className="comments__timestamp">
+                  <p className="comments__user subheader">{comment.name}</p>
+                  <p className="comments__timestamp body-copy">
                     {formatDate(comment.timestamp)}
                   </p>
                 </div>
-                <p className="comments__text">{comment.comment}</p>
+                <p className="comments__text body-copy">{comment.comment}</p>
               </div>
             </div>
           </li>
