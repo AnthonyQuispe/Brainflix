@@ -1,0 +1,272 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/global" as *;
+
+.comments {
+  padding: 1rem;
+}
+.comments__form-group {
+  display: flex;
+}
+.comments__avatar {
+  height: 2.25rem;
+  width: 2.25rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: left;
+  background-color: #e1e1e1;
+  margin: 1rem 0.5rem 0 0;
+
+  @include tablet {
+    height: 3rem;
+    width: 3rem;
+  }
+}
+.comments__textarea-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.comments__item-container {
+  display: flex;
+}
+
+.comments__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comments__content {
+  border-bottom: #e1e1e1 solid 1px;
+  border-top: #e1e1e1 solid 1px;
+}
+
+.comments__item {
+  list-style: none;
+}
+
+.comments__avatars {
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: left;
+  background-color: #e1e1e1;
+  margin: 1rem 0.5rem 0 0;
+
+  @include tablet {
+    height: 3rem;
+    width: 3rem;
+  }
+}
+//Comment Section Form Fields
+
+//   &__form--container {
+//     display: flex;
+
+//     @include tablet-desktop {
+//       padding: 0px 39px;
+//     }
+
+//     @include desktop {
+//       padding: 0 220px;
+//     }
+//   }
+
+//   &__label--name {
+//     display: flex;
+//     flex-direction: column;
+//     color: $silver;
+//     font-size: 0.75rem;
+//     font-weight: 500;
+
+//     margin: 0 0 10px 0;
+//     @include tablet-desktop {
+//       padding: 16px;
+//     }
+
+//     @include desktop {
+//       padding: 16px 16px 16px 14px;
+//     }
+//   }
+
+//   &__label--comment {
+//     display: flex;
+//     flex-direction: column;
+//     margin: 0 0 16px 0;
+//     color: $silver;
+//     font-size: 12px;
+//     font-weight: 500;
+//     @include tablet-desktop {
+//       min-height: 48px;
+//       padding: 0 16px;
+//     }
+//     @include desktop {
+//       padding: 16px 16px 16px 14px;
+//     }
+//   }
+
+//   &__input--name {
+//     border: 1px solid $mercury;
+//     padding: 12px;
+//     border-radius: 4px;
+//     border-color: #e1e1e1;
+//     background-color: #fafafa;
+//   }
+
+//   &__input--name:focus {
+//     border: 1px solid #323232;
+//     outline: none;
+//   }
+
+//   // Comment Button
+//   &__button {
+//     width: 100%;
+//     max-height: 40px;
+//     border-radius: 0.25rem;
+//     color: $white;
+//     background-color: $bandsite-black;
+//     font-size: 0.9375rem;
+//     line-height: 0.25rem;
+//     font-weight: 400;
+//     padding: 1rem;
+//     margin: 0 0 16px 0;
+
+//     @include tablet-desktop {
+//       width: 9.375rem;
+//     }
+//   }
+
+//   &__button:hover {
+//     background-color: $bandsite-darkblack;
+//   }
+//   &__button--container {
+//     @include tablet-desktop {
+//       display: flex;
+//       justify-content: flex-end;
+//       margin: 0 16px 0 0;
+//     }
+//   }
+
+//   &__container--top {
+//     display: flex;
+//     flex-direction: column;
+//     width: 100%;
+
+//     &--text {
+//       display: flex;
+//       justify-content: space-between;
+//     }
+//   }
+
+//   &__container--info {
+//     display: flex;
+//   }
+//   &__container--time {
+//     font-size: 12px;
+//     line-height: 18px;
+//     font-weight: 400;
+//     color: $silver;
+//   }
+//   &__input--container {
+//     width: 100%;
+//   }
+
+//   &__input--comment {
+//     padding-bottom: 50px;
+//     border: 1px solid $mercury;
+//     font-size: 14px;
+//     padding-left: 8px;
+//     padding: 12px 0 44px 14px;
+//     border-radius: 4px;
+//     border-color: #e1e1e1;
+//     background-color: #fafafa;
+//     resize: none;
+//   }
+//   &__input--comment:focus {
+//     border: 1px solid #323232;
+//     outline: none;
+//   }
+//   &__container--name {
+//     font-weight: 500;
+//     padding: 16px 0 0 0;
+//   }
+//   &__container--name {
+//     font-weight: 500;
+//     padding: 16px 0 0 0;
+//     @include tablet-desktop {
+//       font-size: 14px;
+//     }
+//   }
+//   &__container--time {
+//     padding: 16px 0 0 0;
+//   }
+//   &__heading {
+//     font-weight: 600;
+//     margin: 16px 0;
+//     @include tablet-desktop {
+//       font-size: 32px;
+//     }
+//     @include desktop {
+//       padding: 0px 0 0 24px;
+//     }
+//   }
+//   &__avatars {
+//     height: 36px;
+//     width: 36px;
+//     border-radius: 50%;
+//     object-fit: cover;
+//     object-position: left;
+//     background-color: #e1e1e1;
+//     margin: 16px 8px 0 0;
+
+//     @include tablet-desktop {
+//       height: 48px;
+//       width: 48px;
+//     }
+//   }
+
+//   &__bottom {
+//     @include tablet-desktop {
+//       padding: 0px 41px;
+//     }
+//     @include desktop {
+//       padding: 0 220px;
+//     }
+//   }
+//   &__container {
+//     border-bottom: $mercury solid 1px;
+//     border-top: $mercury solid 1px;
+//     stroke-width: 1px;
+//     @include tablet-desktop {
+//       padding: 16px 0;
+//     }
+//   }
+// }
+
+// .avatars {
+//   height: 36px;
+//   width: 36px;
+//   border-radius: 50%;
+//   object-fit: cover;
+//   object-position: left;
+//   margin: 16px 8px 0 0;
+
+//   @include tablet-desktop {
+//     height: 48px;
+//     width: 48px;
+//     margin: 26px 8px 0 0;
+//   }
+//   @include desktop {
+//     height: 48px;
+//     width: 48px;
+//     margin: 26px 0 0 0;
+//   }
+// }
+
+// .divider {
+//   stroke-width: 1px;
+//   background-color: $mercury;
+//   padding: 0 12px;
+// }

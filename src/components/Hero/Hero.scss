@@ -1,0 +1,43 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.hero__video--image {
+  height: 20vw;
+  width: 100%;
+}
+
+.hero__video {
+  height: 56vw;
+  width: 100%;
+}
+
+.video-details__channel {
+  @include tablet {
+    display: flex;
+  }
+}
+
+.video-details__icons {
+  @include tablet {
+    display: flex;
+  }
+}
+
+.video-details__container {
+  border-bottom: 1px solid $Silver;
+  border-top: 1px solid $Silver;
+  display: flex;
+  justify-content: space-evenly;
+
+  @include tablet {
+    border-top: unset;
+  }
+}
+
+.video-details__channel {
+  width: 50%;
+}
+.video-details__icons {
+  width: 50%;
+}
