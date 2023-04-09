@@ -2,6 +2,7 @@ import Video from "../../data/video-details.json";
 import "./Hero.scss";
 import Details from "../HeroDetails/HeroDetails";
 import React, { useState, useEffect } from "react";
+import CommentList from "../Comments/Comments";
 
 function Videos() {
   const [currentVideo, setCurrentVideo] = useState(null);
@@ -40,6 +41,11 @@ function Videos() {
           <Details selectedVideo={currentVideo} />
         </div>
       )}
+      <CommentList
+        videoId={currentVideo?.id}
+        comments={Video[currentVideo?.id]?.comments || []}
+      />
+
       <ul className="hero__videos--lists">
         {sideVideos.map((video) => (
           <li key={video.id}>
@@ -54,7 +60,7 @@ function Videos() {
                 poster={video.image}
               />
               <h3 className="hero__video--heading">{video.title}</h3>
-              <p className="hero__video--">{video.channel}</p>
+              <p className="hero__video--info">{video.channel}</p>
             </div>
           </li>
         ))}
