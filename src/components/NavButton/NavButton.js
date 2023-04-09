@@ -1,4 +1,5 @@
 import upload from "../../assets/Images/Icons/upload.svg";
+import avatar from "../../assets/Images/Mohan-muruge.jpg";
 
 function NavButton() {
   return (
@@ -7,6 +8,7 @@ function NavButton() {
         <img className="nav__button--img" src={upload} />
         <p className="nav__button--text labelsbuttons">UPLOAD </p>
       </button>
+      <img className="nav__button-avatar" src={avatar} alt="avatar" />
     </div>
   );
 }

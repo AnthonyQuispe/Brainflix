@@ -1,6 +1,6 @@
 import avatar from "../../assets/Images/Mohan-muruge.jpg";
 import search from "../../assets/Images/Icons/search.svg";
-import "./Nav.scss";
+import "./NavSearch.scss";
 
 function Nav() {
   return (

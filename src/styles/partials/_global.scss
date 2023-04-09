@@ -21,8 +21,7 @@ body {
   background-color: $Mercury;
 
   @include tablet {
-    height: 3rem;
-    width: 3rem;
+    display: none;
   }
 }
 
@@ -95,4 +94,17 @@ body {
   display: flex;
   flex-direction: column;
   padding: 16px;
+}
+
+.nav__button-avatar {
+  display: none;
+  @include tablet {
+    display: flex;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: left;
+    background-color: $Mercury;
+  }
 }
