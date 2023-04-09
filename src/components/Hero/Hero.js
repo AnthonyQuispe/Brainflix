@@ -45,26 +45,35 @@ function Videos() {
         videoId={currentVideo?.id}
         comments={Video[currentVideo?.id]?.comments || []}
       />
+      <div className="next-video">
+        <h4 className="next-video__heading subheader">NEXT VIDEOS</h4>
+        <ul className="next-video__list">
+          {sideVideos.map((video) => (
+            <li key={video.id} className="next-video__item">
+              <div
+                className="next-video__item-container"
+                onClick={() => handleVideoSelect(video)}
+              >
+                <div className="next-video__image-container">
+                  <img
+                    className="next-video__image"
+                    src={video.image}
+                    alt={video.title}
+                    poster={video.image}
+                  />{" "}
+                </div>
 
-      <ul className="hero__videos--lists">
-        {sideVideos.map((video) => (
-          <li key={video.id}>
-            <div
-              className="hero__video-item"
-              onClick={() => handleVideoSelect(video)}
-            >
-              <img
-                className="hero__video--image"
-                src={video.image}
-                alt={video.title}
-                poster={video.image}
-              />
-              <h3 className="hero__video--heading">{video.title}</h3>
-              <p className="hero__video--info">{video.channel}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+                <div className="next-video__content">
+                  <h3 className="next-video__title subheader">{video.title}</h3>
+                  <p className="next-video__channel body-copy">
+                    {video.channel}
+                  </p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

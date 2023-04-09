@@ -2,11 +2,6 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography" as *;
 
-.hero__video--image {
-  height: 20vw;
-  width: 100%;
-}
-
 .hero__video {
   height: 56vw;
   width: 100%;
@@ -29,6 +24,7 @@
   border-top: 1px solid $Silver;
   display: flex;
   justify-content: space-evenly;
+  padding: 16px 0;
 
   @include tablet {
     border-top: unset;
@@ -40,4 +36,50 @@
 }
 .video-details__icons {
   width: 50%;
+}
+
+.video-details__title {
+  padding-bottom: 1rem;
+}
+
+//Next Video Section
+
+.next-video {
+  padding: 1rem;
+}
+
+.next-video__item-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+}
+.next-video__item {
+  list-style: none;
+}
+
+.next-video__image-container {
+  height: 21vw;
+  width: 66vw;
+  overflow: hidden;
+  margin-right: 1rem;
+  border-radius: 4px;
+  object-position: center;
+}
+
+.next-video__image {
+  height: 29vw;
+  width: 38vw;
+  background-color: $Mercury;
+  object-position: top;
+}
+
+.next-video__content {
+  width: 100%;
+}
+
+.next-video__heading {
+  color: $Silver;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }

@@ -12,8 +12,8 @@ function VideoDetails({ selectedVideo }) {
             {selectedVideo.title}
           </h2>
           <div className="video-details__container">
-            <div className="video-details__channel">
-              <p className="video-details__channel-name">
+            <div className="video-details__channel ">
+              <p className="video-details__channel-name subheader">
                 By {selectedVideo.channel}
               </p>
               <p className="video-details__timestamp">
@@ -21,18 +21,26 @@ function VideoDetails({ selectedVideo }) {
               </p>
             </div>
             <div className="video-details__icons">
-              <p className="video-details__icon video-details__icon--view">
-                <img src={viewImage} alt="viewImage" />
+              <p className=" video-details__icon--view">
+                <img
+                  className="video-details__icon--image"
+                  src={viewImage}
+                  alt="viewImage"
+                />
                 {selectedVideo.views}
               </p>
-              <p className="video-details__icon video-details__icon--like">
-                <img src={likeImage} alt="likeImage" />
+              <p className="video-details__icon--like">
+                <img
+                  className="video-details__icon--image"
+                  src={likeImage}
+                  alt="likeImage"
+                />
                 {selectedVideo.likes}
               </p>
             </div>
           </div>
 
-          <p className="video-details__description">
+          <p className="video-details__description body-copy">
             {selectedVideo.description}
           </p>
         </div>

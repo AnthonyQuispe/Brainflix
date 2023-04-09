@@ -1,3 +1,36 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
 .video-details {
-  padding: 1rem;
+  padding: 1rem 1rem 0.5rem 1rem;
+}
+
+.video-details__timestamp {
+  color: $Silver;
+}
+
+.video-details__icon {
+  color: $Silver;
+}
+
+.video-details__icon--like {
+  color: $Silver;
+}
+
+.video-details__icon--view {
+  margin: 0 0 0.5rem 0;
+  color: $Silver;
+}
+
+.video-details__channel-name {
+  margin: 0 0 0.5rem 0;
+}
+
+.video-details__icon--image {
+  margin: 0 0.5rem 0 0;
+}
+
+.video-details__description {
+  margin: 1rem 0 0 0;
 }
