@@ -29,6 +29,11 @@ body {
   max-width: 35vw;
   align-self: center;
   margin: 0 0 1rem 0;
+
+  @include tablet {
+    width: 19vw;
+    margin: 0 1rem 0 0;
+  }
 }
 
 .nav__button {
@@ -41,10 +46,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 16px;
+  margin-top: 1rem;
+
   @include tablet {
     min-width: 150px;
-    padding: 0 2rem;
+    margin: 0 0 0 0;
+    height: 48px;
   }
   &--text {
     text-align: center;
@@ -71,6 +78,10 @@ body {
   flex-direction: row;
   align-items: center;
 
+  @include tablet {
+    height: 6vw;
+  }
+
   &--input {
     border: none;
     background-color: #fafafa;
@@ -78,6 +89,9 @@ body {
     height: 5vh;
     width: 100%;
     margin: 0 0 0 0.5rem;
+    @include tablet {
+      height: 6vw;
+    }
   }
   &--img {
     margin: 0 0 0 0.5rem;
@@ -87,12 +101,22 @@ body {
 .nav__container {
   display: flex;
   align-items: center;
+  @include tablet {
+    width: 35%;
+    margin: 0 0 0 3rem;
+  }
 }
 
 .nav {
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: 1rem;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 1rem 2rem;
+  }
 }
 
 .nav__button-avatar {
@@ -105,5 +129,13 @@ body {
     object-fit: cover;
     object-position: left;
     background-color: $Mercury;
+    margin: 0 0 0 1.5rem;
+  }
+}
+
+.nav__button--container {
+  @include tablet {
+    display: flex;
+    width: 35%;
   }
 }

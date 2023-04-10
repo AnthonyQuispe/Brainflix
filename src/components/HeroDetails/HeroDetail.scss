@@ -4,6 +4,9 @@
 
 .video-details {
   padding: 1rem 1rem 0.5rem 1rem;
+  @include tablet {
+    padding: 1rem 2rem 0.5rem 2rem;
+  }
 }
 
 .video-details__timestamp {
@@ -16,6 +19,9 @@
 
 .video-details__icon--like {
   color: $Silver;
+  @include tablet {
+    margin: 0 0 0 1.5rem;
+  }
 }
 
 .video-details__icon--view {
@@ -25,6 +31,9 @@
 
 .video-details__channel-name {
   margin: 0 0 0.5rem 0;
+  @include tablet {
+    margin: 0 2rem 0.5rem 0;
+  }
 }
 
 .video-details__icon--image {

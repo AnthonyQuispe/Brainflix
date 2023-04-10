@@ -16,6 +16,7 @@
 .video-details__icons {
   @include tablet {
     display: flex;
+    justify-content: flex-end;
   }
 }
 
@@ -28,6 +29,7 @@
 
   @include tablet {
     border-top: unset;
+    padding: unset;
   }
 }
 
@@ -64,6 +66,12 @@
   margin-right: 1rem;
   border-radius: 4px;
   object-position: center;
+
+  @include tablet {
+    height: 10vw;
+    width: 20vw;
+    margin: 0 1rem 1rem 0;
+  }
 }
 
 .next-video__image {
@@ -71,6 +79,10 @@
   width: 38vw;
   background-color: $Mercury;
   object-position: top;
+  @include tablet {
+    height: 12vw;
+    width: 18vw;
+  }
 }
 
 .next-video__content {
@@ -82,4 +94,20 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  @include tablet {
+    margin: 0 0 2rem 0;
+  }
+}
+
+.next-video__channel {
+  margin: 1rem 0 0 0;
+  @include tablet {
+    margin: 0.5rem 0 0 0;
+  }
+}
+
+.next-video__title {
+  @include tablet {
+    width: 29%;
+  }
 }

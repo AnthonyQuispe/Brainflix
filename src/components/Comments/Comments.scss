@@ -5,6 +5,9 @@
 
 .comments {
   padding: 0.5rem 1rem 1rem 1rem;
+  @include tablet {
+    padding: 1.5rem 2rem 1rem 2rem;
+  }
 }
 .comments__form-container {
   display: flex;
@@ -22,6 +25,7 @@
   @include tablet {
     height: 3rem;
     width: 3rem;
+    margin: 1.5rem 1.5rem 0 0;
   }
 }
 .comments__textarea-title {
@@ -39,6 +43,11 @@
 .comments__header {
   display: flex;
   justify-content: space-between;
+  margin: 1rem 0 0.5rem 0;
+
+  @include tablet {
+    margin: 1rem 0 0 0;
+  }
 }
 
 .comments__item {
@@ -46,8 +55,10 @@
 }
 
 .comments__avatars {
-  height: 36px;
-  width: 50%;
+  min-height: 36px;
+  max-height: 36px;
+  min-width: 11vw;
+  max-width: 11vw;
   border-radius: 50%;
   object-fit: cover;
   object-position: left;
@@ -57,6 +68,11 @@
   @include tablet {
     height: 3rem;
     width: 3rem;
+    min-height: 46px;
+    max-height: 46px;
+    min-width: 6vw;
+    max-width: 6vw;
+    margin: 1.5rem 1.5rem 0 0;
   }
 }
 .comments__count {
@@ -65,16 +81,26 @@
 
 .comments__textarea-container {
   width: 100%;
+  @include tablet {
+    display: flex;
+    align-items: center;
+    margin: 0 0 1rem 0;
+  }
 }
 
 .comments__textarea {
   margin: 0.5rem 0 1rem 0;
-  border: 1px solid $Mercury;
-  padding: 12px 0 19px 14px;
+  border: 0.0625rem solid $Mercury;
+  padding: 0.75rem 0 1.1875rem 0.875rem;
   border-radius: 4px;
   border-color: #e1e1e1;
   background-color: #fafafa;
   resize: none;
+
+  @include tablet {
+    padding: 0.5rem 15rem 0 0.875rem;
+    height: 4.5vh;
+  }
 }
 
 .comments__button {
@@ -89,8 +115,9 @@
   align-items: center;
   margin-bottom: 16px;
   @include tablet {
-    min-width: 150px;
-    padding: 0 2rem;
+    width: 150px;
+    padding: unset;
+    margin: 0.9rem 0 0 1.5rem;
   }
   &--text {
     text-align: center;
@@ -109,10 +136,12 @@
   color: $Silver;
 }
 
-.comments__header {
+.comments__text {
   margin: 0 0 0.5rem 0;
 }
 
-.comments__text {
-  margin: 0 0 0.5rem 0;
+.comments__content {
+  @include tablet {
+    margin: 20px 0;
+  }
 }

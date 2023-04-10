@@ -33,11 +33,11 @@ function CommentList({ videoId }) {
                 rows="4"
                 placeholder="Add a new comment"
               ></textarea>
-              <button className="comments__button comments__input">
-                <img className="comments__button--img" src={addComment} />
-                <p className="comments__button--text labelsbuttons">Comment </p>
-              </button>
             </label>
+            <button className="comments__button comments__input">
+              <img className="comments__button--img" src={addComment} />
+              <p className="comments__button--text labelsbuttons">Comment </p>
+            </button>
           </div>
         </div>
       </form>
