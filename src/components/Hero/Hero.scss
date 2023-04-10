@@ -48,6 +48,10 @@
 
 .next-video {
   padding: 1rem;
+
+  @include desktop {
+    padding: 1rem 0 1rem 0;
+  }
 }
 
 .next-video__item-container {
@@ -109,5 +113,20 @@
 .next-video__title {
   @include tablet {
     width: 29%;
+  }
+  @include desktop {
+    width: 70%;
+  }
+}
+
+.video-container {
+  @include desktop {
+    display: flex;
+  }
+}
+
+.video-details {
+  @include desktop {
+    padding: 1rem 0 0 2rem;
   }
 }

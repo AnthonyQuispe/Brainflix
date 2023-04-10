@@ -74,6 +74,16 @@
     max-width: 6vw;
     margin: 1.5rem 1.5rem 0 0;
   }
+
+  @include desktop {
+    height: 3rem;
+    width: 3rem;
+    min-height: 46px;
+    max-height: 46px;
+    min-width: 5vw;
+    max-width: 5vw;
+    margin: 1.5rem 1.5rem 0 0;
+  }
 }
 .comments__count {
   margin: 0 0 1rem 0;
@@ -98,7 +108,7 @@
   resize: none;
 
   @include tablet {
-    padding: 0.5rem 15rem 0 0.875rem;
+    padding: 0.5rem 11rem 0 0.875rem;
     height: 4.5vh;
   }
 }

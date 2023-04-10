@@ -53,6 +53,12 @@ body {
     margin: 0 0 0 0;
     height: 48px;
   }
+
+  @include desktop {
+    width: 18vw;
+    margin: 0 0 0 0;
+    height: 48px;
+  }
   &--text {
     text-align: center;
     margin: 0 auto;
@@ -81,6 +87,9 @@ body {
   @include tablet {
     height: 6vw;
   }
+  @include desktop {
+    height: 5vw;
+  }
 
   &--input {
     border: none;
@@ -91,6 +100,9 @@ body {
     margin: 0 0 0 0.5rem;
     @include tablet {
       height: 6vw;
+    }
+    @include desktop {
+      height: 5vw;
     }
   }
   &--img {
@@ -116,6 +128,11 @@ body {
     flex-direction: row;
     justify-content: space-evenly;
     padding: 1rem 2rem;
+  }
+  @include desktop {
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 1rem 4rem;
   }
 }
 
