@@ -1,0 +1,158 @@
+@use "variables" as *;
+@use "mixins" as *;
+@use "typography" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Avenir Next";
+}
+
+body {
+  font-family: "Avenir Next";
+}
+
+.nav__avatar {
+  border-radius: 50%;
+  width: 2.25rem;
+  height: 2.25rem;
+  object-fit: cover;
+  object-position: left;
+  background-color: $Mercury;
+
+  @include tablet {
+    display: none;
+  }
+}
+
+.logo {
+  max-width: 35vw;
+  align-self: center;
+  margin: 0 0 1rem 0;
+
+  @include tablet {
+    width: 19vw;
+    margin: 0 1rem 0 0;
+  }
+}
+
+.nav__button {
+  height: 40px;
+  width: 100%;
+  border-radius: 0.25rem;
+  background-color: $BrainFlix-Blue;
+  border-style: none;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+
+  @include tablet {
+    min-width: 150px;
+    margin: 0 0 0 0;
+    height: 48px;
+  }
+
+  @include desktop {
+    width: 18vw;
+    margin: 0 0 0 0;
+    height: 48px;
+  }
+  &--text {
+    text-align: center;
+    margin: 0 auto;
+  }
+  &--img {
+    justify-content: flex-start;
+    margin: 0 0 0 0.5rem;
+  }
+  &:hover {
+    background-color: $BrainFlix-DarkBlue;
+  }
+}
+
+.nav__search {
+  border: 1px solid $Mercury;
+  border-radius: 0.25rem;
+  background-color: #fafafa;
+  width: 100%;
+  height: 5vh;
+  margin-right: 15px;
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @include tablet {
+    height: 6vw;
+  }
+  @include desktop {
+    height: 5vw;
+  }
+
+  &--input {
+    border: none;
+    background-color: #fafafa;
+    color: $BrainFlix-Black;
+    height: 5vh;
+    width: 100%;
+    margin: 0 0 0 0.5rem;
+    @include tablet {
+      height: 6vw;
+    }
+    @include desktop {
+      height: 5vw;
+    }
+  }
+  &--img {
+    margin: 0 0 0 0.5rem;
+  }
+}
+
+.nav__container {
+  display: flex;
+  align-items: center;
+  @include tablet {
+    width: 35%;
+    margin: 0 0 0 3rem;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 1rem 2rem;
+  }
+  @include desktop {
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 1rem 4rem;
+  }
+}
+
+.nav__button-avatar {
+  display: none;
+  @include tablet {
+    display: flex;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: left;
+    background-color: $Mercury;
+    margin: 0 0 0 1.5rem;
+  }
+}
+
+.nav__button--container {
+  @include tablet {
+    display: flex;
+    width: 35%;
+  }
+}

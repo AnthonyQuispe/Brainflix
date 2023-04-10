@@ -1,0 +1,157 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/global" as *;
+
+.comments {
+  padding: 0.5rem 1rem 1rem 1rem;
+  @include tablet {
+    padding: 1.5rem 2rem 1rem 2rem;
+  }
+}
+.comments__form-container {
+  display: flex;
+}
+.comments__avatar {
+  width: 50%;
+  height: 2.25rem;
+  width: 2.25rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: left;
+  background-color: #e1e1e1;
+  margin: 1rem 0.5rem 0 0;
+
+  @include tablet {
+    height: 3rem;
+    width: 3rem;
+    margin: 1.5rem 1.5rem 0 0;
+  }
+}
+.comments__textarea-title {
+  display: flex;
+  flex-direction: column;
+  color: $Silver;
+}
+
+.comments__item-container {
+  display: flex;
+  border-bottom: #e1e1e1 solid 1px;
+  border-top: #e1e1e1 solid 1px;
+}
+
+.comments__header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0 0.5rem 0;
+
+  @include tablet {
+    margin: 1rem 0 0 0;
+  }
+}
+
+.comments__item {
+  list-style: none;
+}
+
+.comments__avatars {
+  min-height: 36px;
+  max-height: 36px;
+  min-width: 11vw;
+  max-width: 11vw;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: left;
+  background-color: #e1e1e1;
+  margin: 1rem 0.5rem 0 0;
+
+  @include tablet {
+    height: 3rem;
+    width: 3rem;
+    min-height: 46px;
+    max-height: 46px;
+    min-width: 6vw;
+    max-width: 6vw;
+    margin: 1.5rem 1.5rem 0 0;
+  }
+
+  @include desktop {
+    height: 3rem;
+    width: 3rem;
+    min-height: 46px;
+    max-height: 46px;
+    min-width: 5vw;
+    max-width: 5vw;
+    margin: 1.5rem 1.5rem 0 0;
+  }
+}
+.comments__count {
+  margin: 0 0 1rem 0;
+}
+
+.comments__textarea-container {
+  width: 100%;
+  @include tablet {
+    display: flex;
+    align-items: center;
+    margin: 0 0 1rem 0;
+  }
+}
+
+.comments__textarea {
+  margin: 0.5rem 0 1rem 0;
+  border: 0.0625rem solid $Mercury;
+  padding: 0.75rem 0 1.1875rem 0.875rem;
+  border-radius: 4px;
+  border-color: #e1e1e1;
+  background-color: #fafafa;
+  resize: none;
+
+  @include tablet {
+    padding: 0.5rem 11rem 0 0.875rem;
+    height: 4.5vh;
+  }
+}
+
+.comments__button {
+  height: 40px;
+  width: 100%;
+  border-radius: 0.25rem;
+  background-color: $BrainFlix-Blue;
+  border-style: none;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+  @include tablet {
+    width: 150px;
+    padding: unset;
+    margin: 0.9rem 0 0 1.5rem;
+  }
+  &--text {
+    text-align: center;
+    margin: 0 auto;
+  }
+  &--img {
+    justify-content: flex-start;
+    margin: 0 0 0 0.5rem;
+  }
+  &:hover {
+    background-color: $BrainFlix-DarkBlue;
+  }
+}
+
+.comments__timestamp {
+  color: $Silver;
+}
+
+.comments__text {
+  margin: 0 0 0.5rem 0;
+}
+
+.comments__content {
+  @include tablet {
+    margin: 20px 0;
+  }
+}
