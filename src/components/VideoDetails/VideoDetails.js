@@ -1,7 +1,7 @@
 import React from "react";
 import likeImage from "../../assets/Images/Icons/likes.svg";
 import viewImage from "../../assets/Images/Icons/views.svg";
-import "./HeroDetail.scss";
+import "./VideoDetail.scss";
 
 function VideoDetails({ selectedVideo }) {
   return (

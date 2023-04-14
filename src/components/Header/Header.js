@@ -1,15 +1,23 @@
 import logo from "../../assets/Images/Logo/BrainFlix-logo.svg";
-import "./Header.sass";
+import "./Header.scss";
 import Nav from "../NavSearch/NavSearch";
 import NavButton from "../NavButton/NavButton";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <header className="header">
       <nav className="nav">
-        <img className="logo" src={logo} alt="Brainflix" />
+        <Link className="nav-link" to="/">
+          {" "}
+          <img className="logo" src={logo} alt="Brainflix" />
+        </Link>
+
         <Nav />
-        <NavButton />
+        <Link to="/upload">
+          {" "}
+          <NavButton />
+        </Link>
       </nav>
     </header>
   );

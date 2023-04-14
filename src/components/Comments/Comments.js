@@ -1,10 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import userAvatar from "../../assets/Images/Mohan-muruge.jpg";
 import "./Comments.scss";
-import videoDetails from "../../data/video-details.json";
+// import videoDetails from "../../data/video-details.json";
 import addComment from "../../assets/Images/Icons/add_comment.svg";
 
+const apiKey = "6ef66323-5a74-40d5-8fa6-4ac16b1e9824";
+const URL = "https://project-2-api.herokuapp.com";
+
 function CommentList({ videoId }) {
+  const [videoDetails, setVideoDetails] = useState([]);
+
+  useEffect(() => {
+    fetch(`${URL}/videos/?api_key=${apiKey}`)
+      .then((response) => response.json())
+      .then((videos) => {
+        // Fetch details for each video
+        const videoPromises = videos.map((video) => {
+          return fetch(`${URL}/videos/${video.id}?api_key=${apiKey}`).then(
+            (response) => response.json()
+          );
+        });
+
+        // Wait for all requests to complete
+        return Promise.all(videoPromises);
+      })
+      .then((videoDetails) => {
+        setVideoDetails(videoDetails);
+      })
+      .catch((error) => {
+        console.error("Error fetching video details:", error);
+      });
+  }, []);
+
   const currentVideo = videoDetails.find((video) => video.id === videoId);
 
   const videoComments = currentVideo ? currentVideo.comments : [];

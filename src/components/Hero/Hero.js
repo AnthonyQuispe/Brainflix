@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Video from "../../data/video-details.json";
 import "./Hero.scss";
-import Details from "../HeroDetails/HeroDetails";
+import Details from "../VideoDetails/VideoDetails";
 import CommentList from "../Comments/Comments";
 
 function Videos() {
