@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import userAvatar from "../../assets/Images/Mohan-muruge.jpg";
 import "./Comments.scss";
-// import videoDetails from "../../data/video-details.json";
 import addComment from "../../assets/Images/Icons/add_comment.svg";
 
 const apiKey = "6ef66323-5a74-40d5-8fa6-4ac16b1e9824";
@@ -11,14 +11,15 @@ function CommentList({ videoId }) {
   const [videoDetails, setVideoDetails] = useState([]);
 
   useEffect(() => {
-    fetch(`${URL}/videos/?api_key=${apiKey}`)
-      .then((response) => response.json())
+    axios
+      .get(`${URL}/videos/?api_key=${apiKey}`)
+      .then((response) => response.data)
       .then((videos) => {
         // Fetch details for each video
         const videoPromises = videos.map((video) => {
-          return fetch(`${URL}/videos/${video.id}?api_key=${apiKey}`).then(
-            (response) => response.json()
-          );
+          return axios
+            .get(`${URL}/videos/${video.id}?api_key=${apiKey}`)
+            .then((response) => response.data);
         });
 
         // Wait for all requests to complete

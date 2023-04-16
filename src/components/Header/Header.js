@@ -14,7 +14,7 @@ function Header() {
         </Link>
 
         <Nav />
-        <Link to="/upload">
+        <Link className="nav-upload" to="/upload">
           {" "}
           <NavButton />
         </Link>
