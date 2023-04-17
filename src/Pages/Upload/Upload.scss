@@ -1,7 +1,7 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography" as *;
-
+@use "../../styles/partials/global" as *;
 .upload {
   display: flex;
   flex-direction: column;
@@ -10,20 +10,7 @@
   @include tablet {
     align-items: flex-start;
   }
-  &__img {
-    width: 90vw;
-    height: 55vw;
-    border-radius: 4px;
-    @include tablet {
-      width: 50vw;
-      height: 30vw;
-      margin-left: 2rem;
-    }
-    @include desktop {
-      width: 40vw;
-      height: 23vw;
-    }
-  }
+
   &__input {
     display: flex;
     flex-direction: column;
@@ -32,14 +19,14 @@
     @include tablet {
       margin-left: 2rem;
     }
-    &--title {
+    &--heading {
       font-size: 1rem;
       font-weight: 600;
       text-transform: uppercase;
       color: $Silver;
       margin-top: 2rem;
     }
-    &--text {
+    &--title {
       display: flex;
       justify-content: center;
       padding-left: 0.5rem;
@@ -56,7 +43,7 @@
         height: 5vw;
       }
     }
-    &--text::placeholder {
+    &--title::placeholder {
       color: black;
     }
   }
@@ -72,14 +59,14 @@
     @include desktop {
       border-bottom: none;
     }
-    &--title {
+    &--heading {
       font-size: 1rem;
       font-weight: 600;
       text-transform: uppercase;
       color: $Silver;
       margin-top: 2rem;
     }
-    &--text {
+    &--textarea {
       display: flex;
       font-family: Avenir Next;
       padding-left: 0.5rem;
@@ -90,6 +77,7 @@
       border: 1px solid #e1e1e1;
       background-color: #fafafa;
       color: black;
+      resize: none;
       @include tablet {
         height: 20vw;
         margin-bottom: 2rem;
@@ -99,29 +87,112 @@
         height: 10vw;
       }
     }
-    &--text::placeholder {
+    &--textarea::placeholder {
       color: black;
     }
   }
-  &__title {
+  &__heading {
     align-self: flex-start;
     margin: 2rem 2rem 2rem 1rem;
     @include tablet {
-      border-bottom: 1px solid $Mercury;
       padding-bottom: 2rem;
       width: 93vw;
     }
   }
   &__thumbnail {
     color: black;
-    &--title {
+    &--heading {
       font-size: 1.1rem;
       margin: 0rem 1rem 1rem 0rem;
       font-weight: 600;
       text-transform: uppercase;
       color: $Silver;
       @include tablet {
+        margin-left: 2rem;
+        margin-top: 2rem;
       }
+    }
+    &--image {
+      width: 90vw;
+      height: 55vw;
+      border-radius: 4px;
+      @include tablet {
+        width: 50vw;
+        height: 30vw;
+        margin-left: 2rem;
+      }
+      @include desktop {
+        width: 40vw;
+        height: 23vw;
+      }
+    }
+  }
+  &__button {
+    height: 15vw;
+    width: 90vw;
+    border-radius: 0.25rem;
+    background-color: $BrainFlix-Blue;
+    border-style: none;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    @include tablet {
+      height: 7vw;
+      width: 30vw;
+      margin: 0rem 4rem;
+    }
+    @include desktop {
+      height: 5vw;
+      width: 20vw;
+    }
+    &--text {
+      margin-left: 5rem;
+      margin-right: 6rem;
+      text-transform: uppercase;
+      @include tablet {
+        margin-left: 3rem;
+        margin-right: 3rem;
+      }
+    }
+  }
+  &__cancel {
+    color: $BrainFlix-Blue;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 2rem 0rem;
+  }
+  &__container--button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include tablet {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+      width: 100%;
+    }
+  }
+  &__container {
+    @include tablet {
+      display: flex;
+      border-bottom: 1px solid $Mercury;
+      border-top: 1px solid $Mercury;
+      flex-direction: column;
+      width: 100%;
+    }
+    @include desktop {
+      border-bottom: 1px solid $Mercury;
+
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 2rem;
+      flex-direction: row;
+      width: 100%;
     }
   }
 }

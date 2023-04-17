@@ -1,52 +1,47 @@
-import bikeImage from "../../assets/Images/Upload-video-preview.jpg";
-import publishImage from "../../assets/Images/Icons/publish.svg";
+import bike from "../../assets/Images/Upload-video-preview.jpg";
+import publish from "../../assets/Images/Icons/publish.svg";
 import "./Upload.scss";
 
 function Upload() {
   return (
     <>
       <section className="upload">
-        <h1 className="upload-title page-header">Upload Video</h1>
-        <div className="upload-container">
-          <div className="upload-thumbnail">
-            <h2 className="upload-thumbnail-title">video thumbnail</h2>
-            <img className="upload-img" src={bikeImage} alt="Thumbnail" />
+        <h1 className="upload__heading page-header">Upload Video</h1>
+        <div className="upload__container">
+          <div className="upload__thumbnail">
+            <h2 className="upload__thumbnail--heading">video thumbnail</h2>
+            <img className="upload__thumbnail--image" src={bike}></img>
           </div>
           <div>
-            <div className="upload-input">
-              <p className="upload-input-title">Title Your Video</p>
+            <div className="upload__input">
+              <p className="upload__input--heading">TITLE YOUR VIDEO</p>
 
               <input
-                className="upload-input-text"
+                className="upload__input--title"
                 placeholder="Add a title to your video"
                 type="text"
-              />
+              ></input>
             </div>
-            <div className="upload-description">
-              <p className="upload-description-title">
-                Add a Video Description
+            <div className="upload__description">
+              <p className="upload__description--heading">
+                ADD A VIDEO DESCRIPTION
               </p>
 
               <textarea
-                className="upload-description-text"
+                className="upload__description--textarea"
                 name="Description"
-                id="Description"
                 placeholder="Add a description to your video"
-              />
+              ></textarea>
             </div>
           </div>
         </div>
-        <div className="upload-buttons-container">
-          <button className="upload-button">
-            <img
-              className="upload-button-img"
-              src={publishImage}
-              alt="Publish"
-            />
-            <p className="upload-button-text">Publish</p>
+        <div className="upload__container--button">
+          <button className="upload__button">
+            <img className="upload__button--publish" src={publish} />
+            <p className="upload__button--text ">PUBLISH</p>
           </button>
-          <a className="upload-link" href="#">
-            Cancel
+          <a className="upload__cancel" href="#">
+            CANCEL
           </a>
         </div>
       </section>
