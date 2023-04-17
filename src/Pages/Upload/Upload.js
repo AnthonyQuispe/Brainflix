@@ -6,42 +6,49 @@ function Upload() {
   return (
     <>
       <section className="upload">
-        <h1 className="upload__title page-header">Upload Video</h1>
-        <div className="upload__video">
-          <h2 className="upload__video--title subheader">VIDEO THUMBNAIL</h2>
-          <img className="upload__video--img" src={bikeImage} />
-        </div>
-        <div className="upload__input-title">
-          <p className="upload__input-title--subheading subheader">
-            TITLE YOUR VIDEO
-          </p>
-          <input
-            className="upload__input-title--text"
-            placeholder="Add a title to your video"
-            type="text"
-          />
-        </div>
-        <div className="upload__desc">
-          <p className="upload__desc--title subheader">
-            ADD A VIDEO DESCRIPTION
-          </p>
-          <textarea
-            className="upload__desc--text"
-            name="Description"
-            id="Description"
-            placeholder="Add a description to your video"
-          />
-        </div>
-        <div className="upload__btn--container">
-          <button className="upload__btn">
-            <img className="upload__btn--img" src={publishImage} />
-            <p className="upload__btn--text labelsbuttons ">Publish</p>
-          </button>
-        </div>
+        <h1 className="upload-title page-header">Upload Video</h1>
+        <div className="upload-container">
+          <div className="upload-thumbnail">
+            <h2 className="upload-thumbnail-title">video thumbnail</h2>
+            <img className="upload-img" src={bikeImage} alt="Thumbnail" />
+          </div>
+          <div>
+            <div className="upload-input">
+              <p className="upload-input-title">Title Your Video</p>
 
-        <a className="upload__link" href="#">
-          CANCEL
-        </a>
+              <input
+                className="upload-input-text"
+                placeholder="Add a title to your video"
+                type="text"
+              />
+            </div>
+            <div className="upload-description">
+              <p className="upload-description-title">
+                Add a Video Description
+              </p>
+
+              <textarea
+                className="upload-description-text"
+                name="Description"
+                id="Description"
+                placeholder="Add a description to your video"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="upload-buttons-container">
+          <button className="upload-button">
+            <img
+              className="upload-button-img"
+              src={publishImage}
+              alt="Publish"
+            />
+            <p className="upload-button-text">Publish</p>
+          </button>
+          <a className="upload-link" href="#">
+            Cancel
+          </a>
+        </div>
       </section>
     </>
   );
