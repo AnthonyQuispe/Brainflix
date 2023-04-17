@@ -1,14 +1,19 @@
-// import "./App.css";
-
 import Header from "./components/Header/Header";
-import Hero from "./components/Hero/Hero";
+import Home from "./Pages/Home/Home";
+import { Routes, Route } from "react-router-dom";
+import Upload from "./Pages/Upload/Upload";
+import VideoDetails from "./components/VideoDetails/VideoDetails"; // Import the VideoDetails component
 
 function App() {
   return (
-    <div>
+    <>
       <Header />
-      <Hero />
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/upload" element={<Upload />} />
+        <Route path="/videos/:id" element={<VideoDetails />} />
+      </Routes>
+    </>
   );
 }
 

@@ -1,0 +1,127 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid $Mercury;
+  @include tablet {
+    align-items: flex-start;
+  }
+  &__img {
+    width: 90vw;
+    height: 55vw;
+    border-radius: 4px;
+    @include tablet {
+      width: 50vw;
+      height: 30vw;
+      margin-left: 2rem;
+    }
+    @include desktop {
+      width: 40vw;
+      height: 23vw;
+    }
+  }
+  &__input {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+
+    @include tablet {
+      margin-left: 2rem;
+    }
+    &--title {
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: $Silver;
+      margin-top: 2rem;
+    }
+    &--text {
+      display: flex;
+      justify-content: center;
+      padding-left: 0.5rem;
+      width: 85vw;
+      height: 10vw;
+      border-radius: 4px;
+      border: 1px solid #e1e1e1;
+      background-color: #fafafa;
+      @include tablet {
+        height: 6vw;
+      }
+      @include desktop {
+        width: 45vw;
+        height: 5vw;
+      }
+    }
+    &--text::placeholder {
+      color: black;
+    }
+  }
+  &__description {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+
+    @include tablet {
+      border-bottom: 1px solid $Mercury;
+      margin-left: 2rem;
+    }
+    @include desktop {
+      border-bottom: none;
+    }
+    &--title {
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: $Silver;
+      margin-top: 2rem;
+    }
+    &--text {
+      display: flex;
+      font-family: Avenir Next;
+      padding-left: 0.5rem;
+      padding-top: 0.5rem;
+      width: 85vw;
+      height: 30vw;
+      border-radius: 4px;
+      border: 1px solid #e1e1e1;
+      background-color: #fafafa;
+      color: black;
+      @include tablet {
+        height: 20vw;
+        margin-bottom: 2rem;
+      }
+      @include desktop {
+        width: 45vw;
+        height: 10vw;
+      }
+    }
+    &--text::placeholder {
+      color: black;
+    }
+  }
+  &__title {
+    align-self: flex-start;
+    margin: 2rem 2rem 2rem 1rem;
+    @include tablet {
+      border-bottom: 1px solid $Mercury;
+      padding-bottom: 2rem;
+      width: 93vw;
+    }
+  }
+  &__thumbnail {
+    color: black;
+    &--title {
+      font-size: 1.1rem;
+      margin: 0rem 1rem 1rem 0rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: $Silver;
+      @include tablet {
+      }
+    }
+  }
+}

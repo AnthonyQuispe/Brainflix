@@ -1,17 +1,51 @@
+import axios from "axios";
+import "./Home.scss";
+import Details from "../../components/VideoDetails/VideoDetails";
+import CommentList from "../../components/Comments/Comments";
 import React, { useState, useEffect } from "react";
-import Video from "../../data/video-details.json";
-import "./Hero.scss";
-import Details from "../HeroDetails/HeroDetails";
-import CommentList from "../Comments/Comments";
+
+const apiKey = "6ef66323-5a74-40d5-8fa6-4ac16b1e9824";
+const URL = "https://project-2-api.herokuapp.com";
 
 function Videos() {
-  const [currentVideo, setCurrentVideo] = useState(null);
+  const [currentVideo, setCurrentVideo] = useState();
   const [sideVideos, setSideVideos] = useState([]);
+  const [videoDetails, setVideoDetails] = useState([]);
 
   useEffect(() => {
-    setCurrentVideo(Video[0]);
-    setSideVideos(Video.slice(1));
+    axios
+      .get(`${URL}/videos/?api_key=${apiKey}`)
+      .then((response) => response.data)
+      .then((videos) => {
+        setCurrentVideo(videos[0]);
+        setSideVideos(videos.slice(1));
+
+        // Fetch details for each video
+        const videoPromises = videos.map((video) => {
+          return axios
+            .get(`${URL}/videos/${video.id}?api_key=${apiKey}`)
+            .then((response) => response.data);
+        });
+
+        Promise.all(videoPromises)
+          .then((videoDetails) => {
+            setVideoDetails(videoDetails);
+          })
+          .catch((error) => {
+            console.error("Error fetching video details:", error);
+          });
+      })
+      .catch((error) => {
+        console.error("Error fetching videos:", error);
+      });
   }, []);
+
+  useEffect(() => {
+    if (videoDetails && videoDetails.length > 0) {
+      const selectedVideo = videoDetails.find((v) => v.id === currentVideo?.id);
+      setCurrentVideo(selectedVideo);
+    }
+  }, [videoDetails]);
 
   const handleVideoSelect = (video) => {
     if (currentVideo !== video) {
@@ -23,10 +57,20 @@ function Videos() {
           (v) => v.id !== video.id
         );
       });
-      setCurrentVideo(video);
+      // Find the corresponding video object in videoDetails state
+      const selectedVideo = videoDetails.find((v) => v.id === video.id);
+      setCurrentVideo(selectedVideo);
+
+      // Update video URL and poster
+      const videoElement = document.querySelector(".hero__video");
+      videoElement.src = selectedVideo.videoUrl;
+      videoElement.poster = selectedVideo.image;
+
+      // Update URL in browser
+      window.history.pushState(null, null, `/videos/${selectedVideo.id}`);
     }
   };
-
+  console.log(currentVideo);
   return (
     <div className="hero">
       {currentVideo && (
@@ -40,9 +84,10 @@ function Videos() {
           <div className="video-container">
             <div className="video-detail">
               <Details selectedVideo={currentVideo} />
+
               <CommentList
                 videoId={currentVideo?.id}
-                comments={Video[currentVideo?.id]?.comments || []}
+                comments={currentVideo?.comments || []}
               />
             </div>
             <div className="next-video">
