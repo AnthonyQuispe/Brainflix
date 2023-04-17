@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Home.scss";
 import Details from "../../components/VideoDetails/VideoDetails";
 import CommentList from "../../components/Comments/Comments";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 
 const apiKey = "6ef66323-5a74-40d5-8fa6-4ac16b1e9824";
 const URL = "https://project-2-api.herokuapp.com";
@@ -41,9 +40,7 @@ function Videos() {
       });
   }, []);
 
-  // Add videoDetails as a dependency
   useEffect(() => {
-    // Update currentVideo state whenever videoDetails state is updated
     if (videoDetails && videoDetails.length > 0) {
       const selectedVideo = videoDetails.find((v) => v.id === currentVideo?.id);
       setCurrentVideo(selectedVideo);

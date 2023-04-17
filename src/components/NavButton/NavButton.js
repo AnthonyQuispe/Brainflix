@@ -1,6 +1,6 @@
 import upload from "../../assets/Images/Icons/upload.svg";
 import avatar from "../../assets/Images/Mohan-muruge.jpg";
-
+import "./NavButton.scss";
 function NavButton() {
   return (
     <div className="nav__button--container">

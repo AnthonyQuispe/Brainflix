@@ -1,0 +1,112 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid $Mercury;
+
+  &__video--img {
+    border-radius: 4px;
+    width: 88vw;
+    height: 50vw;
+  }
+
+  &__video--title {
+    color: $Silver;
+    padding: 0 0 0.5rem 0;
+  }
+
+  &__input-title {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    margin-left: 1rem;
+
+    &--subheading {
+      color: $Silver;
+      margin-top: 2rem;
+    }
+
+    &--text {
+      display: flex;
+      justify-content: center;
+      padding-left: 0.5rem;
+      width: 85vw;
+      height: 10vw;
+      border-radius: 4px;
+      border: 1px solid $Mercury;
+      background-color: $Alabaster;
+
+      &::placeholder {
+        color: black;
+      }
+    }
+  }
+
+  &__desc {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    margin-left: 1rem;
+
+    &--title {
+      color: $Silver;
+      margin-top: 0.5rem;
+    }
+    &--text {
+      display: flex;
+      font-family: Avenir Next;
+      padding-left: 0.5rem;
+      padding-top: 0.5rem;
+      width: 85vw;
+      height: 30vw;
+      border-radius: 4px;
+      border: 1px solid $Mercury;
+      background-color: $Alabaster;
+      color: black;
+      resize: none;
+      &::placeholder {
+        color: black;
+      }
+    }
+  }
+
+  &__title {
+    margin: 1.5rem 2rem 1.5rem 1rem;
+    align-self: flex-start;
+  }
+
+  &__link {
+    color: $BrainFlix-Blue;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 2rem 0rem;
+  }
+}
+
+.upload__btn {
+  height: 15vw;
+  width: 90vw;
+  border-radius: 0.25rem;
+  background-color: $BrainFlix-Blue;
+  border-style: none;
+  color: $White;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+
+  &--text {
+    text-align: center;
+    margin-left: 5rem;
+    margin-right: 6rem;
+  }
+
+  &:hover {
+    background-color: $BrainFlix-DarkBlue;
+  }
+}
