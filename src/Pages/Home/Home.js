@@ -70,7 +70,7 @@ function Videos() {
       window.history.pushState(null, null, `/videos/${selectedVideo.id}`);
     }
   };
-  console.log(currentVideo);
+
   return (
     <div className="hero">
       {currentVideo && (
