@@ -20,9 +20,6 @@
       margin-left: 2rem;
     }
     &--heading {
-      font-size: 1rem;
-      font-weight: 600;
-      text-transform: uppercase;
       color: $Silver;
       margin-top: 2rem;
     }
@@ -60,8 +57,6 @@
       border-bottom: none;
     }
     &--heading {
-      font-size: 1rem;
-      font-weight: 600;
       text-transform: uppercase;
       color: $Silver;
       margin-top: 2rem;
@@ -95,16 +90,14 @@
     align-self: flex-start;
     margin: 2rem 2rem 2rem 1rem;
     @include tablet {
-      padding-bottom: 2rem;
+      align-self: center;
       width: 93vw;
     }
   }
   &__thumbnail {
     color: black;
     &--heading {
-      font-size: 1.1rem;
-      margin: 0rem 1rem 1rem 0rem;
-      font-weight: 600;
+      margin: 0rem 1rem 0.5rem 0;
       text-transform: uppercase;
       color: $Silver;
       @include tablet {
