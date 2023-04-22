@@ -1,11 +1,9 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import likeImage from "../../assets/Images/Icons/likes.svg";
 import viewImage from "../../assets/Images/Icons/views.svg";
 import "./VideoDetail.scss";
 
 function VideoDetails({ selectedVideo }) {
-  const { id } = useParams(); // Access the video ID from URL parameter
   return (
     <div>
       {selectedVideo && (

@@ -2,18 +2,34 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import bike from "../../assets/Images/Upload-video-preview.jpg";
 import publish from "../../assets/Images/Icons/publish.svg";
+import axios from "axios";
 import "./Upload.scss";
 
 function Upload() {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
     setIsFormSubmitted(true);
-    setTimeout(() => {
-      setIsFormSubmitted(false);
-      window.location.href = "/";
-    }, 3000);
+
+    // Create a new FormData object
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("thumbnail" /* put the selected file object here */);
+
+    // Make a POST request to the server with the form data
+    axios
+      .post("/api/videos", formData)
+      .then((response) => {
+        setIsFormSubmitted(false);
+        window.location.href = "/";
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const Notification = () => {
@@ -35,7 +51,11 @@ function Upload() {
               <h2 className="upload__thumbnail--heading subheader">
                 video thumbnail
               </h2>
-              <img className="upload__thumbnail--image" src={bike}></img>
+              <img
+                className="upload__thumbnail--image"
+                src={bike}
+                alt="BikeImage"
+              ></img>
             </div>
             <div>
               <div className="upload__input">
@@ -46,6 +66,8 @@ function Upload() {
                   className="upload__input--title"
                   placeholder="Add a title to your video"
                   type="text"
+                  value={title}
+                  onChange={(event) => setTitle(event.target.value)}
                 ></input>
               </div>
               <div className="upload__description">
@@ -56,13 +78,31 @@ function Upload() {
                   className="upload__description--textarea"
                   name="Description"
                   placeholder="Add a description to your video"
+                  value={description}
+                  onChange={(event) => setDescription(event.target.value)}
                 ></textarea>
+              </div>
+              <div className="upload__input">
+                <p className="upload__input--heading subheader">
+                  CHOOSE A THUMBNAIL
+                </p>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(event) => {
+                    // Do something with the selected file object
+                  }}
+                ></input>
               </div>
             </div>
           </div>
           <div className="upload__container--button">
             <button type="submit" className="upload__button">
-              <img className="upload__button--publish" src={publish} />
+              <img
+                className="upload__button--publish"
+                src={publish}
+                alt="publishIcon"
+              />
               <p className="upload__button--text ">PUBLISH</p>
             </button>
             <Link to="/" className="upload__cancel">

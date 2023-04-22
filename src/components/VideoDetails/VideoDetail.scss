@@ -7,39 +7,38 @@
   @include tablet {
     padding: 1rem 2rem 0.5rem 2rem;
   }
-}
 
-.video-details__timestamp {
-  color: $Silver;
-}
-
-.video-details__icon {
-  color: $Silver;
-}
-
-.video-details__icon--like {
-  color: $Silver;
-  @include tablet {
-    margin: 0 0 0 1.5rem;
+  &__timestamp {
+    color: $Silver;
   }
-}
 
-.video-details__icon--view {
-  margin: 0 0 0.5rem 0;
-  color: $Silver;
-}
+  &__icon {
+    color: $Silver;
 
-.video-details__channel-name {
-  margin: 0 0 0.5rem 0;
-  @include tablet {
-    margin: 0 2rem 0.5rem 0;
+    &--like {
+      color: $Silver;
+      @include tablet {
+        margin: 0 0 0 1.5rem;
+      }
+    }
+
+    &--view {
+      margin: 0 0 0.5rem 0;
+      color: $Silver;
+    }
+
+    &--image {
+      margin: 0 0.5rem 0 0;
+    }
   }
-}
+  &__channel-name {
+    margin: 0 0 0.5rem 0;
+    @include tablet {
+      margin: 0 2rem 0.5rem 0;
+    }
+  }
 
-.video-details__icon--image {
-  margin: 0 0.5rem 0 0;
-}
-
-.video-details__description {
-  margin: 1rem 0 0 0;
+  &__description {
+    margin: 1rem 0 0 0;
+  }
 }

@@ -2,19 +2,36 @@ import axios from "axios";
 import "./Home.scss";
 import Details from "../../components/VideoDetails/VideoDetails";
 import CommentList from "../../components/Comments/Comments";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
-const apiKey = "6ef66323-5a74-40d5-8fa6-4ac16b1e9824";
-const URL = "https://project-2-api.herokuapp.com";
+// const apiKey = "6ef66323-5a74-40d5-8fa6-4ac16b1e9824";
+const URL = "http://localhost:8080/videos";
 
 function Videos() {
-  const [currentVideo, setCurrentVideo] = useState();
+  const [currentVideo, setCurrentVideo] = useState(null);
   const [sideVideos, setSideVideos] = useState([]);
   const [videoDetails, setVideoDetails] = useState([]);
 
+  const fetchVideoDetails = useCallback((videoId) => {
+    axios
+      .get(`${URL}`)
+      .then((response) => response.data)
+      .then((videoDetails) => {
+        setVideoDetails((prevVideoDetails) => {
+          const filteredDetails = prevVideoDetails.filter(
+            (v) => v.id !== videoId
+          );
+          return [...filteredDetails, videoDetails];
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching video details:", error);
+      });
+  }, []);
+
   useEffect(() => {
     axios
-      .get(`${URL}/videos/?api_key=${apiKey}`)
+      .get(`${URL}`)
       .then((response) => response.data)
       .then((videos) => {
         setCurrentVideo(videos[0]);
@@ -23,7 +40,7 @@ function Videos() {
         // Fetch details for each video
         const videoPromises = videos.map((video) => {
           return axios
-            .get(`${URL}/videos/${video.id}?api_key=${apiKey}`)
+            .get(`${URL}/${video.id}`)
             .then((response) => response.data);
         });
 
@@ -45,31 +62,38 @@ function Videos() {
       const selectedVideo = videoDetails.find((v) => v.id === currentVideo?.id);
       setCurrentVideo(selectedVideo);
     }
-  }, [videoDetails]);
+  }, [videoDetails, currentVideo?.id]);
 
-  const handleVideoSelect = (video) => {
-    if (currentVideo !== video) {
-      setSideVideos((prevVideos) => {
-        const filteredVideos = prevVideos.filter(
-          (v) => v.id !== currentVideo?.id
-        );
-        return [...filteredVideos, currentVideo].filter(
-          (v) => v.id !== video.id
-        );
-      });
-      // Find the corresponding video object in videoDetails state
-      const selectedVideo = videoDetails.find((v) => v.id === video.id);
-      setCurrentVideo(selectedVideo);
+  const handleVideoSelect = useCallback(
+    (video) => {
+      if (currentVideo !== video) {
+        setSideVideos((prevVideos) => {
+          const filteredVideos = prevVideos.filter(
+            (v) => v.id !== currentVideo?.id
+          );
+          return [...filteredVideos, currentVideo].filter(
+            (v) => v.id !== video.id
+          );
+        });
 
-      // Update video URL and poster
-      const videoElement = document.querySelector(".hero__video");
-      videoElement.src = selectedVideo.videoUrl;
-      videoElement.poster = selectedVideo.image;
+        if (!videoDetails.find((v) => v.id === video.id)) {
+          fetchVideoDetails(video.id);
+        } else {
+          const selectedVideo = videoDetails.find((v) => v.id === video.id);
+          setCurrentVideo(selectedVideo);
+        }
 
-      // Update URL in browser
-      window.history.pushState(null, null, `/videos/${selectedVideo.id}`);
-    }
-  };
+        // Update video URL and poster
+        const videoElement = document.querySelector(".hero__video");
+        videoElement.src = video.videoUrl;
+        videoElement.poster = video.image;
+
+        // Update URL in browser
+        window.history.pushState(null, null, `/videos/${video.id}`);
+      }
+    },
+    [currentVideo, videoDetails, fetchVideoDetails]
+  );
 
   return (
     <div className="hero">
