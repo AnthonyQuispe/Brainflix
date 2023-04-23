@@ -28,25 +28,22 @@ function Upload() {
 
       // Make a POST request to the server with the form data
       await axios.post("http://localhost:8080/videos", formData);
-      setIsFormSubmitted(false);
+      window.alert("Your video has been uploaded successfully!");
       window.location.href = "/";
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsFormSubmitted(false);
     }
-  };
-  const Notification = () => {
-    return (
-      <div className="upload__notification">
-        <p>Your video has been uploaded successfully!</p>
-      </div>
-    );
   };
 
   return (
     <>
       <section className="upload">
         <h1 className="upload__heading page-header">Upload Video</h1>
-        {isFormSubmitted && <Notification />}
+        {isFormSubmitted && (
+          <div className="upload__notification">Your video is uploading...</div>
+        )}
         <form onSubmit={handleFormSubmit}>
           <div className="upload__container">
             <div className="upload__thumbnail">
@@ -59,6 +56,7 @@ function Upload() {
                 alt="BikeImage"
               ></img>
               <input
+                className="upload__thumbnail--"
                 type="file"
                 accept="image/*"
                 onChange={(event) => setImage(event.target.files[0])}

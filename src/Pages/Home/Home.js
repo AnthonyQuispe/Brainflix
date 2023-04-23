@@ -10,45 +10,19 @@ function Videos() {
   const [currentVideo, setCurrentVideo] = useState(null);
   const [sideVideos, setSideVideos] = useState([]);
   const [videoDetails, setVideoDetails] = useState([]);
-  const fetchVideoDetails = useCallback((videoId) => {
-    axios
-      .get(`${URL}`)
-      .then((response) => response.data)
-      .then((videoDetails) => {
-        setVideoDetails((prevVideoDetails) => {
-          const filteredDetails = prevVideoDetails.filter(
-            (v) => v.id !== videoId
-          );
-          return [...filteredDetails, videoDetails];
-        });
-      })
-      .catch((error) => {
-        console.error("Error fetching video details:", error);
-      });
-  }, []);
 
-  useEffect(() => {
+  const fetchVideosAndDetails = useCallback(() => {
     axios
-      .get(`${URL}`)
-      .then((response) => response.data)
-      .then((videos) => {
+      .get(`${URL}?_embed=comments`)
+      .then((response) => {
+        const videos = response.data;
         setCurrentVideo(videos[0]);
         setSideVideos(videos.slice(1));
 
-        // Fetch details for each video
-        const videoPromises = videos.map((video) => {
-          return axios
-            .get(`${URL}/${video.id}`)
-            .then((response) => response.data);
+        const details = videos.map((video) => {
+          return { id: video.id, ...video };
         });
-
-        Promise.all(videoPromises)
-          .then((videoDetails) => {
-            setVideoDetails(videoDetails);
-          })
-          .catch((error) => {
-            console.error("Error fetching video details:", error);
-          });
+        setVideoDetails(details);
       })
       .catch((error) => {
         console.error("Error fetching videos:", error);
@@ -56,11 +30,8 @@ function Videos() {
   }, []);
 
   useEffect(() => {
-    if (videoDetails && videoDetails.length > 0) {
-      const selectedVideo = videoDetails.find((v) => v.id === currentVideo?.id);
-      setCurrentVideo(selectedVideo);
-    }
-  }, [videoDetails, currentVideo?.id]);
+    fetchVideosAndDetails();
+  }, [fetchVideosAndDetails]);
 
   const handleVideoSelect = useCallback(
     (video) => {
@@ -74,12 +45,8 @@ function Videos() {
           );
         });
 
-        if (!videoDetails.find((v) => v.id === video.id)) {
-          fetchVideoDetails(video.id);
-        } else {
-          const selectedVideo = videoDetails.find((v) => v.id === video.id);
-          setCurrentVideo(selectedVideo);
-        }
+        const selectedVideo = videoDetails.find((v) => v.id === video.id);
+        setCurrentVideo(selectedVideo);
 
         // Update video URL and poster
         const videoElement = document.querySelector(".hero__video");
@@ -88,12 +55,9 @@ function Videos() {
 
         // Update URL in browser
         window.history.pushState(null, null, `/videos/${video.id}`);
-
-        // Set the current video to the selected video
-        setCurrentVideo(video);
       }
     },
-    [currentVideo, videoDetails, fetchVideoDetails]
+    [currentVideo, videoDetails]
   );
 
   return (

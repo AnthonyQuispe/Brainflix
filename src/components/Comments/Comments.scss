@@ -78,11 +78,7 @@
     }
 
     @include desktop {
-      height: 3rem;
-      width: 3rem;
-      min-height: 46px;
-      max-height: 46px;
-      min-width: 5vw;
+      min-width: 3.5vw;
       max-width: 5vw;
       margin: 1.5rem 1.5rem 0 0;
     }
