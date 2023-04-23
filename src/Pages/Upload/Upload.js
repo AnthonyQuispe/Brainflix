@@ -9,29 +9,31 @@ function Upload() {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState(null);
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     setIsFormSubmitted(true);
 
-    // Create a new FormData object
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("thumbnail" /* put the selected file object here */);
+    try {
+      if (!title || !description) {
+        throw new Error("Title and description are required");
+      }
 
-    // Make a POST request to the server with the form data
-    axios
-      .post("/api/videos", formData)
-      .then((response) => {
-        setIsFormSubmitted(false);
-        window.location.href = "/";
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      // Create a new FormData object
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("image", image);
+
+      // Make a POST request to the server with the form data
+      await axios.post("http://localhost:8080/videos", formData);
+      setIsFormSubmitted(false);
+      window.location.href = "/";
+    } catch (error) {
+      console.log(error);
+    }
   };
-
   const Notification = () => {
     return (
       <div className="upload__notification">
@@ -53,9 +55,14 @@ function Upload() {
               </h2>
               <img
                 className="upload__thumbnail--image"
-                src={bike}
+                src={image ? URL.createObjectURL(image) : bike}
                 alt="BikeImage"
               ></img>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(event) => setImage(event.target.files[0])}
+              />
             </div>
             <div>
               <div className="upload__input">
@@ -81,18 +88,6 @@ function Upload() {
                   value={description}
                   onChange={(event) => setDescription(event.target.value)}
                 ></textarea>
-              </div>
-              <div className="upload__input">
-                <p className="upload__input--heading subheader">
-                  CHOOSE A THUMBNAIL
-                </p>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(event) => {
-                    // Do something with the selected file object
-                  }}
-                ></input>
               </div>
             </div>
           </div>

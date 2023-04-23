@@ -4,14 +4,12 @@ import Details from "../../components/VideoDetails/VideoDetails";
 import CommentList from "../../components/Comments/Comments";
 import React, { useState, useEffect, useCallback } from "react";
 
-// const apiKey = "6ef66323-5a74-40d5-8fa6-4ac16b1e9824";
 const URL = "http://localhost:8080/videos";
 
 function Videos() {
   const [currentVideo, setCurrentVideo] = useState(null);
   const [sideVideos, setSideVideos] = useState([]);
   const [videoDetails, setVideoDetails] = useState([]);
-
   const fetchVideoDetails = useCallback((videoId) => {
     axios
       .get(`${URL}`)
@@ -90,6 +88,9 @@ function Videos() {
 
         // Update URL in browser
         window.history.pushState(null, null, `/videos/${video.id}`);
+
+        // Set the current video to the selected video
+        setCurrentVideo(video);
       }
     },
     [currentVideo, videoDetails, fetchVideoDetails]
