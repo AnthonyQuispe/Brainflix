@@ -44,14 +44,12 @@ function CommentList({ videoId }) {
   return (
     videoDetails.length > 0 && (
       <div className="comments">
-        <h4 className="comments__count subheader">
-          {videoComments.length} Comments
-        </h4>
+        <h4 className="comments__count ">{videoComments.length} Comments</h4>
         <form className="comments__form">
           <div className="comments__form-container">
             <img className="comments__avatar" src={userAvatar} alt="Avatar" />
             <div className="comments__textarea-container">
-              <label className="comments__textarea-title subheader">
+              <label className="comments__textarea-title ">
                 JOIN THE CONVERSATION
                 <textarea
                   className="comments__textarea comments__input"
@@ -68,7 +66,7 @@ function CommentList({ videoId }) {
                   src={addComment}
                   alt="Comment-Button"
                 />
-                <p className="comments__button--text labelsbuttons">Comment </p>
+                <p className="comments__button--text ">Comment </p>
               </button>
             </div>
           </div>
@@ -80,12 +78,12 @@ function CommentList({ videoId }) {
                 <img className="comments__avatars" alt="" />
                 <div className="comments__content">
                   <div className="comments__header">
-                    <p className="comments__user subheader">{comment.name}</p>
-                    <p className="comments__timestamp body-copy">
+                    <p className="comments__user">{comment.name}</p>
+                    <p className="comments__timestamp">
                       {formatDate(comment.timestamp)}
                     </p>
                   </div>
-                  <p className="comments__text body-copy">{comment.comment}</p>
+                  <p className="comments__text">{comment.comment}</p>
                 </div>
               </div>
             </li>

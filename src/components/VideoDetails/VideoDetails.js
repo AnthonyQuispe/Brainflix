@@ -8,13 +8,11 @@ function VideoDetails({ selectedVideo }) {
     <div>
       {selectedVideo && (
         <div className="video-details">
-          <h2 className="video-details__title page-header">
-            {selectedVideo.title}
-          </h2>
+          <h2 className="video-details__title">{selectedVideo.title}</h2>
 
           <div className="video-details__container">
             <div className="video-details__channel">
-              <p className="video-details__channel-name subheader">
+              <p className="video-details__channel-name">
                 By {selectedVideo.channel}
               </p>
               <p className="video-details__timestamp">
@@ -47,7 +45,7 @@ function VideoDetails({ selectedVideo }) {
               </p>
             </div>
           </div>
-          <p className="video-details__description body-copy">
+          <p className="video-details__description">
             {selectedVideo.description}
           </p>
         </div>

@@ -40,16 +40,14 @@ function Upload() {
   return (
     <>
       <section className="upload">
-        <h1 className="upload__heading page-header">Upload Video</h1>
+        <h1 className="upload__heading ">Upload Video</h1>
         {isFormSubmitted && (
           <div className="upload__notification">Your video is uploading...</div>
         )}
         <form onSubmit={handleFormSubmit}>
           <div className="upload__container">
             <div className="upload__thumbnail">
-              <h2 className="upload__thumbnail--heading subheader">
-                video thumbnail
-              </h2>
+              <h2 className="upload__thumbnail--heading">video thumbnail</h2>
               <img
                 className="upload__thumbnail--image"
                 src={image ? URL.createObjectURL(image) : bike}
@@ -64,9 +62,7 @@ function Upload() {
             </div>
             <div>
               <div className="upload__input">
-                <p className="upload__input--heading subheader">
-                  TITLE YOUR VIDEO
-                </p>
+                <p className="upload__input--heading ">TITLE YOUR VIDEO</p>
                 <input
                   className="upload__input--title"
                   placeholder="Add a title to your video"
@@ -76,7 +72,7 @@ function Upload() {
                 ></input>
               </div>
               <div className="upload__description">
-                <p className="upload__description--heading subheader">
+                <p className="upload__description--heading">
                   ADD A VIDEO DESCRIPTION
                 </p>
                 <textarea

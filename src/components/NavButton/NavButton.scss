@@ -29,6 +29,7 @@
   &--text {
     text-align: center;
     margin: 0 auto;
+    @include labelsbuttons;
   }
   &--img {
     justify-content: flex-start;

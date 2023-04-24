@@ -80,7 +80,7 @@ function Videos() {
               />
             </div>
             <div className="next-video">
-              <h4 className="next-video__heading subheader">NEXT VIDEOS</h4>
+              <h4 className="next-video__heading ">NEXT VIDEOS</h4>
               <ul className="next-video__list">
                 {sideVideos.map((video) => (
                   <li key={video.id} className="next-video__item">
@@ -98,12 +98,8 @@ function Videos() {
                       </div>
 
                       <div className="next-video__content">
-                        <h3 className="next-video__title subheader">
-                          {video.title}
-                        </h3>
-                        <p className="next-video__channel body-copy">
-                          {video.channel}
-                        </p>
+                        <h3 className="next-video__title ">{video.title}</h3>
+                        <p className="next-video__channel ">{video.channel}</p>
                       </div>
                     </div>
                   </li>
