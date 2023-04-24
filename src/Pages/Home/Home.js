@@ -2,38 +2,27 @@ import axios from "axios";
 import "./Home.scss";
 import Details from "../../components/VideoDetails/VideoDetails";
 import CommentList from "../../components/Comments/Comments";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
-const apiKey = "6ef66323-5a74-40d5-8fa6-4ac16b1e9824";
-const URL = "https://project-2-api.herokuapp.com";
+const URL = "http://localhost:8080/videos";
 
 function Videos() {
-  const [currentVideo, setCurrentVideo] = useState();
+  const [currentVideo, setCurrentVideo] = useState(null);
   const [sideVideos, setSideVideos] = useState([]);
   const [videoDetails, setVideoDetails] = useState([]);
 
-  useEffect(() => {
+  const fetchVideosAndDetails = useCallback(() => {
     axios
-      .get(`${URL}/videos/?api_key=${apiKey}`)
-      .then((response) => response.data)
-      .then((videos) => {
+      .get(`${URL}?_embed=comments`)
+      .then((response) => {
+        const videos = response.data;
         setCurrentVideo(videos[0]);
         setSideVideos(videos.slice(1));
 
-        // Fetch details for each video
-        const videoPromises = videos.map((video) => {
-          return axios
-            .get(`${URL}/videos/${video.id}?api_key=${apiKey}`)
-            .then((response) => response.data);
+        const details = videos.map((video) => {
+          return { id: video.id, ...video };
         });
-
-        Promise.all(videoPromises)
-          .then((videoDetails) => {
-            setVideoDetails(videoDetails);
-          })
-          .catch((error) => {
-            console.error("Error fetching video details:", error);
-          });
+        setVideoDetails(details);
       })
       .catch((error) => {
         console.error("Error fetching videos:", error);
@@ -41,35 +30,35 @@ function Videos() {
   }, []);
 
   useEffect(() => {
-    if (videoDetails && videoDetails.length > 0) {
-      const selectedVideo = videoDetails.find((v) => v.id === currentVideo?.id);
-      setCurrentVideo(selectedVideo);
-    }
-  }, [videoDetails]);
+    fetchVideosAndDetails();
+  }, [fetchVideosAndDetails]);
 
-  const handleVideoSelect = (video) => {
-    if (currentVideo !== video) {
-      setSideVideos((prevVideos) => {
-        const filteredVideos = prevVideos.filter(
-          (v) => v.id !== currentVideo?.id
-        );
-        return [...filteredVideos, currentVideo].filter(
-          (v) => v.id !== video.id
-        );
-      });
-      // Find the corresponding video object in videoDetails state
-      const selectedVideo = videoDetails.find((v) => v.id === video.id);
-      setCurrentVideo(selectedVideo);
+  const handleVideoSelect = useCallback(
+    (video) => {
+      if (currentVideo !== video) {
+        setSideVideos((prevVideos) => {
+          const filteredVideos = prevVideos.filter(
+            (v) => v.id !== currentVideo?.id
+          );
+          return [...filteredVideos, currentVideo].filter(
+            (v) => v.id !== video.id
+          );
+        });
 
-      // Update video URL and poster
-      const videoElement = document.querySelector(".hero__video");
-      videoElement.src = selectedVideo.videoUrl;
-      videoElement.poster = selectedVideo.image;
+        const selectedVideo = videoDetails.find((v) => v.id === video.id);
+        setCurrentVideo(selectedVideo);
 
-      // Update URL in browser
-      window.history.pushState(null, null, `/videos/${selectedVideo.id}`);
-    }
-  };
+        // Update video URL and poster
+        const videoElement = document.querySelector(".hero__video");
+        videoElement.src = video.videoUrl;
+        videoElement.poster = video.image;
+
+        // Update URL in browser
+        window.history.pushState(null, null, `/videos/${video.id}`);
+      }
+    },
+    [currentVideo, videoDetails]
+  );
 
   return (
     <div className="hero">
@@ -91,7 +80,7 @@ function Videos() {
               />
             </div>
             <div className="next-video">
-              <h4 className="next-video__heading subheader">NEXT VIDEOS</h4>
+              <h4 className="next-video__heading ">NEXT VIDEOS</h4>
               <ul className="next-video__list">
                 {sideVideos.map((video) => (
                   <li key={video.id} className="next-video__item">
@@ -109,12 +98,8 @@ function Videos() {
                       </div>
 
                       <div className="next-video__content">
-                        <h3 className="next-video__title subheader">
-                          {video.title}
-                        </h3>
-                        <p className="next-video__channel body-copy">
-                          {video.channel}
-                        </p>
+                        <h3 className="next-video__title ">{video.title}</h3>
+                        <p className="next-video__channel ">{video.channel}</p>
                       </div>
                     </div>
                   </li>

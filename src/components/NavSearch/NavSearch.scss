@@ -8,7 +8,7 @@
   border-radius: 0.25rem;
   background-color: #fafafa;
   width: 100%;
-  height: 2vh;
+  height: 10vw;
   margin-right: 15px;
   justify-content: flex-start;
   display: flex;
@@ -26,7 +26,7 @@
     border: none;
     background-color: #fafafa;
     color: $BrainFlix-Black;
-    height: 2vh;
+    height: 10vw;
     width: 100%;
     margin: 0 0 0 0.5rem;
     @include tablet {
