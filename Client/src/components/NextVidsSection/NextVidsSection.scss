@@ -1,0 +1,86 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.next-video {
+  padding: 1rem;
+
+  @include desktop {
+    padding: 1rem 0 1rem 0;
+  }
+
+  &__item {
+    list-style: none;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 0.5rem 0;
+    }
+  }
+
+  &__image {
+    height: 29vw;
+    width: 38vw;
+    background-color: $Mercury;
+    object-position: top;
+    @include tablet {
+      height: 12vw;
+      width: 18vw;
+    }
+
+    &-container {
+      height: 21vw;
+      width: 66vw;
+      overflow: hidden;
+      margin-right: 1rem;
+      border-radius: 4px;
+      object-position: center;
+
+      @include tablet {
+        height: 10vw;
+        width: 20vw;
+        margin: 0 1rem 1rem 0;
+      }
+    }
+  }
+
+  &__content {
+    width: 100%;
+  }
+
+  &__heading {
+    color: $Silver;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    @include tablet {
+      margin: 0 0 2rem 0;
+    }
+    @include subheader;
+  }
+
+  &__channel {
+    margin: 1rem 0 0 0;
+    @include tablet {
+      margin: 0.5rem 0 0 0;
+    }
+    @include body-copy;
+  }
+
+  &__title {
+    @include tablet {
+      width: 29%;
+    }
+    @include desktop {
+      width: 70%;
+    }
+    @include subheader;
+  }
+}
+
+.video-container {
+  @include desktop {
+    display: flex;
+  }
+}

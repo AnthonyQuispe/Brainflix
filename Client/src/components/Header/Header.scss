@@ -1,0 +1,158 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.header {
+  width: 100%;
+  height: 150px;
+
+  @include tablet {
+    height: 100px;
+  }
+}
+
+.nav {
+  @include tablet {
+    align-items: center;
+  }
+  &__link {
+    display: flex;
+    max-height: 50px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__logo {
+    max-width: 35vw;
+    align-self: center;
+  }
+}
+
+.nav-upload {
+  text-decoration: none;
+  max-height: 50px;
+}
+
+.nav__button {
+  height: 40px;
+  width: 100%;
+  border-radius: 0.25rem;
+  background-color: $Blue;
+  border-style: none;
+  color: $White;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include tablet {
+    min-width: 150px;
+    height: 50px;
+  }
+
+  @include desktop {
+    width: 18vw;
+  }
+  &-text {
+    text-align: center;
+    margin: 0 auto;
+    @include labelsbuttons;
+  }
+  &-img {
+    justify-content: flex-start;
+    margin: 0 0 0 0.5rem;
+  }
+  &:hover {
+    background-color: $DarkBlue;
+  }
+}
+
+.nav__search {
+  border: 1px solid $Mercury;
+  border-radius: 0.25rem;
+  background-color: $Alabaster;
+  width: 100%;
+  height: 36px;
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @include tablet {
+    height: 50px;
+  }
+
+  &-input {
+    border: none;
+    background-color: $Alabaster;
+    color: $Black;
+    height: 100%;
+    width: 100%;
+    margin: 0 0 0 0.5rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+  &-img {
+    margin: 0 0 0 0.5rem;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  height: 150px;
+  gap: 10px;
+
+  @include tablet {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100px;
+  }
+
+  &__avatar {
+    border-radius: 50%;
+    width: 2.25rem;
+    height: 2.25rem;
+    object-fit: cover;
+    object-position: left;
+    background-color: $Mercury;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    @include tablet {
+      height: 50px;
+      min-width: 300px;
+      width: 50%;
+    }
+  }
+
+  &__button-avatar {
+    display: none;
+    @include tablet {
+      display: flex;
+      height: 3rem;
+      width: 3rem;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: left;
+      background-color: $Mercury;
+      margin: 0 0 0 1.5rem;
+    }
+  }
+
+  &__button-container {
+    @include tablet {
+      display: flex;
+    }
+  }
+}

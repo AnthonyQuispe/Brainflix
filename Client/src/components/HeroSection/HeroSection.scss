@@ -1,0 +1,17 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.hero {
+  background-color: $Black;
+  width: 100%;
+
+  &__video {
+    width: 100%;
+    min-height: 200px;
+
+    @include desktop {
+      min-height: calc(100dvh - 100px);
+    }
+  }
+}

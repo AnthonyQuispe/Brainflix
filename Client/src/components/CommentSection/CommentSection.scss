@@ -1,0 +1,149 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.comments {
+  padding: 20px;
+
+  &__form-container {
+    display: flex;
+  }
+
+  &__avatar {
+    width: 50%;
+    height: 2.25rem;
+    width: 2.25rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: left;
+    background-color: $Mercury;
+    margin: 1rem 0.5rem 0 0;
+
+    @include tablet {
+      height: 3rem;
+      width: 3rem;
+      margin: 1.5rem 1.5rem 0 0;
+    }
+  }
+
+  &__textarea-title {
+    display: flex;
+    flex-direction: column;
+    color: $Silver;
+  }
+
+  &__item-container {
+    display: flex;
+    border-bottom: $Mercury solid 1px;
+    border-top: $Mercury solid 1px;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0 0.5rem 0;
+
+    @include tablet {
+      margin: 1rem 0 0 0;
+    }
+  }
+
+  &__item {
+    list-style: none;
+  }
+
+  &__avatars {
+    height: 50px;
+    width: 100%;
+    max-width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: left;
+    background-color: $Mercury;
+  }
+
+  &__count {
+    margin: 0 0 1rem 0;
+    @include subheader;
+  }
+
+  &__textarea-container {
+    width: 100%;
+    @include tablet {
+      display: flex;
+      align-items: center;
+      margin: 0 0 1rem 0;
+    }
+  }
+
+  &__textarea {
+    margin: 0.5rem 0 1rem 0;
+    border: 0.0625rem solid $Mercury;
+    padding: 0.75rem 0 1.1875rem 0.875rem;
+    border-radius: 4px;
+    border-color: #e1e1e1;
+    background-color: #fafafa;
+    resize: none;
+
+    @include tablet {
+      padding: 0.5rem 11rem 0 0.875rem;
+      height: 4.5vh;
+    }
+
+    &-title {
+      @include subheader;
+    }
+  }
+
+  &__button {
+    height: 40px;
+    width: 100%;
+    border-radius: 0.25rem;
+    background-color: $Blue;
+    border-style: none;
+    color: $White;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    @include tablet {
+      width: 150px;
+      padding: unset;
+      margin: 0.9rem 0 0 1.5rem;
+    }
+    &--text {
+      text-align: center;
+      margin: 0 auto;
+      @include labelsbuttons;
+    }
+    &--img {
+      justify-content: flex-start;
+      margin: 0 0 0 0.5rem;
+    }
+    &:hover {
+      background-color: $DarkBlue;
+    }
+  }
+
+  &__timestamp {
+    color: $Silver;
+    @include body-copy;
+  }
+
+  &__text {
+    margin: 0 0 0.5rem 0;
+    @include body-copy;
+  }
+
+  &__content {
+    @include tablet {
+      margin: 20px 0;
+      width: 100%;
+    }
+  }
+  &__user {
+    @include subheader;
+  }
+}

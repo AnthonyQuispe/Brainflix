@@ -1,0 +1,69 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.descriptions-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__timestamp {
+    color: $Silver;
+  }
+
+  &__icon {
+    color: $Silver;
+
+    &-text {
+      color: $Silver;
+    }
+
+    &-image {
+      margin: 0 0.5rem 0 0;
+    }
+  }
+
+  &__container {
+    display: flex;
+    width: 100%;
+    gap: 80px;
+    border-top: 2px solid $Mercury;
+    border-bottom: 2px solid $Mercury;
+    padding: 10px 0;
+
+    @include desktop {
+      justify-content: space-between;
+    }
+  }
+
+  &__channel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    @include desktop {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  &__channel-name {
+    @include subheader;
+  }
+
+  &__description {
+    max-width: 1024px;
+    text-align: left;
+    @include body-copy;
+  }
+}

@@ -1,0 +1,25 @@
+@use "./mixins" as *;
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("../../assets/font/AvenirNextLTPro-Regular.otf") format("opentype"),
+    url("../../assets/font/Alternative files/AvenirNextLTPro.ttf")
+      format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("../../assets/font/AvenirNextLTPro-Demi.otf") format("opentype"),
+    url("../../assets/font/Alternative files/AvenirNextLTProDemi.ttf")
+      format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("../../assets/font/AvenirNextLTPro-Bold.otf") format("opentype"),
+    url("../../assets/font/Alternative files/AvenirNextLTProBold.ttf")
+      format("truetype");
+  font-weight: 700;
+}

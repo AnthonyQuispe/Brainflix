@@ -1,0 +1,194 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/global" as *;
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid $Mercury;
+  gap: 20px;
+  padding: 20px;
+  min-height: 100dvh;
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    width: 100%;
+
+    &-heading {
+      color: $Silver;
+      @include subheader;
+    }
+    &-title {
+      display: flex;
+      justify-content: center;
+      padding-left: 0.5rem;
+      width: 100%;
+      height: 55px;
+      border-radius: 4px;
+      border: 1px solid $Mercury;
+      background-color: $Alabaster;
+
+      &:focus {
+        outline: none;
+      }
+    }
+    &-title::placeholder {
+      color: $Black;
+    }
+  }
+  &__description {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    width: 100%;
+
+    @include tablet {
+      border-bottom: 1px solid $Mercury;
+    }
+    @include desktop {
+      border-bottom: none;
+    }
+    &-heading {
+      text-transform: uppercase;
+      color: $Silver;
+      @include subheader;
+    }
+    &-textarea {
+      display: flex;
+      font-family: Avenir Next;
+      padding-left: 0.5rem;
+      padding-top: 0.5rem;
+      width: 100%;
+      height: 100px;
+      border-radius: 4px;
+      border: 1px solid $Mercury;
+      background-color: $Alabaster;
+      color: $Black;
+      resize: none;
+
+      @include desktop {
+        height: 200px;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+    &-textarea::placeholder {
+      color: $Black;
+    }
+  }
+  &__heading {
+    align-self: flex-start;
+    width: 100%;
+    @include page-header;
+  }
+  &__thumbnail {
+    color: $Black;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+
+    &-upload {
+      @include tablet {
+        margin: 0 0 0 12.5rem;
+      }
+    }
+
+    &-heading {
+      text-transform: uppercase;
+      color: $Silver;
+      @include subheader;
+    }
+    &-image {
+      width: 100%;
+      border-radius: 4px;
+    }
+  }
+  &__button {
+    height: 50px;
+    width: 100%;
+    border-radius: 0.25rem;
+    background-color: $Blue;
+    border-style: none;
+    color: $White;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include tablet {
+      max-width: 200px;
+    }
+
+    &-text {
+      text-transform: uppercase;
+      @include labelsbuttons;
+      @include tablet {
+        margin-left: 3rem;
+        margin-right: 3rem;
+      }
+    }
+  }
+  &__cancel {
+    color: $Blue;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__container-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    gap: 20px;
+
+    @include tablet {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+      width: 100%;
+    }
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include tablet {
+      display: flex;
+      border-bottom: 1px solid $Mercury;
+      border-top: 1px solid $Mercury;
+      width: 100%;
+    }
+    @include desktop {
+      border-bottom: 1px solid $Mercury;
+      justify-content: center;
+      padding: 20px 0;
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+
+  &__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__text-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
